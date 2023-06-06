@@ -45,7 +45,7 @@ species *find_species(char *identifier) {
 	hash_node *v=hash_table_find(identifier);
 	return v==NULL?NULL:v->node;
 	/*
-	¾É°æ±¾ÊµÏÖ, ÒÑÒÆ¶¯ÖÁ hash_table.c
+	æ—§ç‰ˆæœ¬å®ç°, å·²ç§»åŠ¨è‡³ hash_table.c
 	int v=str_hash(identifier);
 	for (hash_node *i=head[v];i;i=i->next)
 		if (!str_compare(identifier,i->node->identifier)) return i->node;
@@ -80,10 +80,10 @@ int species_insert(char *identifier,char *sequence) {
 	if (u!=NULL) {
 		if (u->modified&4) {
 			u->node->sequence=str_copy(sequence);
-			u->modified=1; /* ±ê¼Ç 2 Óë 4 ²»¹²´æ */
+			u->modified=1; /* æ ‡è®° 2 ä¸ 4 ä¸å…±å­˜ */
 			return u->number;
 		}
-		else return -1;
+		else return u->number;
 	}
 	species *v=(species*)malloc(sizeof(species));
 	v->identifier=str_copy(identifier);
@@ -104,7 +104,7 @@ int species_modify(char *identifier,char *sequence) {
 }
 
 int species_remove_by_hash_node(hash_node *u) {
-	/* ±ê¼Ç 2 Óë 4 ²»¹²´æ */
+	/* æ ‡è®° 2 ä¸ 4 ä¸å…±å­˜ */
 	if (u->modified&4) return -1;
 	else if (u->modified&2) {
 		free(u->node->sequence);
@@ -175,7 +175,7 @@ tree build_tree(double match_value[][26],double blank_value,double max_distance)
 	memset(result.left_son,0xff,sizeof(int)*(tree_size<<1));
 	memset(result.right_son,0xff,sizeof(int)*(tree_size<<1));
 	{
-		/* dis ¼ÆËã */
+		/* dis è®¡ç®— */
 		double *u=(double*)malloc(sizeof(double)*(hash_table_size)); int v,w;
 		for (hash_node *i=hash_table_begin();i!=NULL;) {
 			if (i->modified) {
@@ -218,7 +218,7 @@ tree build_tree(double match_value[][26],double blank_value,double max_distance)
 		free(u);
 	}
 	{
-		/* ½¨±ß³¤¾ØÕó, ½¨Ò¶½Úµã */
+		/* å»ºè¾¹é•¿çŸ©é˜µ, å»ºå¶èŠ‚ç‚¹ */
 		int u=0;
 		node_distance=(double**)malloc(sizeof(double*)*tree_size);
 		for (int i=0;i<tree_size;++i) {
@@ -234,7 +234,7 @@ tree build_tree(double match_value[][26],double blank_value,double max_distance)
 			heap_push(make_edge(i,j));
 	}
 	{
-		/* ½¨Ê÷ */
+		/* å»ºæ ‘ */
 		edge u; int v,w,*x=(int*)malloc(sizeof(int)*tree_size);
 		dsu_father=(int*)malloc(sizeof(int)*tree_size);
 		for (int i=0;i<tree_size;++i) dsu_father[i]=x[i]=i;
@@ -258,7 +258,7 @@ tree build_tree(double match_value[][26],double blank_value,double max_distance)
 		free(dsu_father); free(x);
 	}
 	{
-		/* µ÷Õû×ÓÊ÷Ë³Ğò */
+		/* è°ƒæ•´å­æ ‘é¡ºåº */
 		int *u=(int*)malloc(sizeof(int)*result.size),v=0;
 		for (hash_node *i=hash_table_begin();i!=NULL;i=hash_table_next(i))
 			block_list_to_double(i->node->distance,node_distance[v++]);
