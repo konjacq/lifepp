@@ -1,4 +1,3 @@
-
 #include "ui.h"
 #include "ui_2.h"
 #include "ui_3.h"
@@ -10,7 +9,6 @@ int start_status = 0;
 int nowat = 1;
 char butt = 'N';
 int nxt = 0;
-
 
 void endeditbox()
 {
@@ -390,6 +388,7 @@ void key_handle(char *inpt)
 		opt[0] = '\0';
 		strcpy(opt, all_sp[nw].identifier);
 		strcat(opt, ">");
+
 		strcat(opt, ">Import Success ! Press Enter to continue.");
 		editBox.settext(opt);
 		clr_cmd();

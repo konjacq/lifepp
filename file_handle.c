@@ -179,7 +179,6 @@ void cr_file()
 
 void rec_file()
 {
-	//printf("%d\n",tot);
 	remove("config.lifepp");
 	FILE *cof = fopen("config.lifepp", "w");
 	fputc(tot + 48, cof);

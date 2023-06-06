@@ -16,7 +16,6 @@ int dfs_pth2 = 0;
 
 //------------------------
 tree toprint;
-
 void draw_pic()
 {
 	toprint = build_tree(mathch_value, -5.0, 1.0);
@@ -385,5 +384,5 @@ void butt3BBB()
 	getimage(butt_img, "PNG", "UI_1");
 	putimage(1096, 35, 104, 30, butt_img, 1096, 35);
 	delimage(butt_img);
-
 }
+
