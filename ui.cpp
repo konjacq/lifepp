@@ -2,7 +2,6 @@
 #include "ui_2.h"
 #include "ui_3.h"
 #include "file_handle.h"
-#include "connector.h"
 
 PIMAGE img = newimage();
 sys_edit editBox;
@@ -11,47 +10,9 @@ int nowat = 1;
 char butt = 'N';
 int nxt = 0;
 
-/*
-
-void init_ui_2();
-int if_butt2B(int x, int y);
-void butt2B();
-void butt2BB();
-void clr2_cmd();
-int mouse_click_2();
-
-
-
-//editBox.setreadonly(true);
-void init_ui();
-void get_start();
-void clr_cmd();
-int if_buttL(int x, int y);
-void buttL();
-void buttLL();
-int if_buttA(int x, int y);
-void buttA();
-void buttAA();
-int if_buttD(int x, int y);
-void buttD();
-void buttDD();
-int if_buttE(int x, int y);
-void buttE();
-void buttEE();
-int if_buttU(int x, int y);
-void buttU();
-void buttUU();
-int mouse_click();
-void text_status(char *textget);
-void key_handle(char *inpt);
-void buttreset();
-*/
-
-
 void endeditbox()
 {
 	editBox.destroy();
-	//editBox_2.destroy();
 }
 
 void init_ui()
@@ -124,12 +85,9 @@ void get_start()
 
 void clr_cmd()
 {
-	//start_status = 0;
 	setfillcolor(WHITE);
 	ege_fillrect(5, 680, 20, 30);
 	editBox.setreadonly(true);
-	//editBox.setfocus();
-	//editBox.setfocus(false);
 }
 
 int if_buttL(int x, int y)
@@ -421,23 +379,16 @@ void key_handle(char *inpt)
 			else
 				mid[nn++] = inpt[i];
 		}
-
 		mid[nn - 1] = '\0';
-		//inpt[strlen(inpt) - 2] = '\0';
-
 		char *dir = file_copy(mid, tot++);
-		//Sprintf("%d", tot);
+		//printf("%d\n", tot);
 		FILE *st = fopen(dir, "r");
 		handle_seq(st, tot - 1);
-		//printf("1");
-		//printf("%s", all_sp[tot - 1].sequence);
 		char opt[100000];
 		opt[0] = '\0';
-		//printf("%s", all_sp[tot - 1].identifier);
 		strcpy(opt, all_sp[nw].identifier);
-		//printf("1");
 		strcat(opt, ">");
-		//strcat(opt, all_sp[tot - 1].sequence);
+
 		strcat(opt, ">Import Success ! Press Enter to continue.");
 		editBox.settext(opt);
 		clr_cmd();

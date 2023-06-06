@@ -16,37 +16,6 @@ int dfs_pth2 = 0;
 
 //------------------------
 tree toprint;
-/*
-int temp_root[1] = {9};
-int temp_left_son[10] = {0, -1, -1, -1, -1, -1, 1, 6, 7, 8};
-int temp_right_son[10] = {0, -1, -1, -1, -1, -1, 2, 3, 4, 5};
-double temp_edge_length[10] = {0, -1, -1, -1, -1, -1, 0.25, 0.5, 0.75, 1.0};
-species *temp_node[10];
-species tnode[9];*/
-
-//------------------------
-/*void temp()
-{
-	toprint.size = 9;
-	toprint.root_size = 1;
-	toprint.left_son = temp_left_son;
-	toprint.right_son = temp_right_son;
-	toprint.edge_length = temp_edge_length;
-	toprint.root = temp_root;
-	//toprint.node=tnode;
-	temp_node[1] = &tnode[1];
-	temp_node[2] = &tnode[2];
-	temp_node[3] = &tnode[3];
-	temp_node[4] = &tnode[4];
-	temp_node[5] = &tnode[5];
-	tnode[1].identifier = "UL123.1 C";
-	tnode[2].identifier = "UF234.1 D";
-	tnode[3].identifier = "EP345.1 E";
-	tnode[4].identifier = "UP456.1 F";
-	tnode[5].identifier = "EI567.1 G";
-	toprint.node = temp_node;
-}
-*/
 void draw_pic()
 {
 	toprint = build_tree(mathch_value, -5.0, 1.0);
@@ -72,7 +41,6 @@ void draw_pic()
 			}
 		}
 	}
-	//printf("1");
 	//toprint.left_son[5]=4;
 	//toprint.right_son[5]=1;
 	int need_lines = (totsp - 1) * 2 + 2;
@@ -416,5 +384,5 @@ void butt3BBB()
 	getimage(butt_img, "PNG", "UI_1");
 	putimage(1096, 35, 104, 30, butt_img, 1096, 35);
 	delimage(butt_img);
-
 }
+

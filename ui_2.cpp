@@ -161,5 +161,5 @@ void butt2BBB()
 	getimage(butt_img, "PNG", "UI_1");
 	putimage(1096, 35, 104, 30, butt_img, 1096, 35);
 	delimage(butt_img);
-
 }
+

@@ -30,15 +30,16 @@ void matit()
 
 int init_file()
 {
-	tot = 0;
 	if (newpro == 0)
 		return 0;
+	tot = 0;
 	FILE *cof = fopen("config.lifepp", "r");
-	fclose(cof);
+
 	if (cof == NULL)
 	{
 		rec_file();
 	}
+	fclose(cof);
 	cof = fopen("config.lifepp", "r");
 
 	tot = fgetc(cof) - 48;
